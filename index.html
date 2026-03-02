@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 敏捷思維研討會 | 線上報名</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #2dd4bf;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 1);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --input-border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; font-family: 'Inter', "PingFang TC", sans-serif; }
+
+        body {
+            margin: 0;
+            background-color: #0f172a;
+            background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: var(--glass);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header p { font-size: 0.9rem; letter-spacing: 2px; opacity: 0.9; margin: 0 0 10px 0; }
+        header h1 { margin: 0; font-size: 1.6rem; line-height: 1.3; }
+
+        .content { padding: 30px; }
+
+        form { display: flex; flex-direction: column; gap: 24px; }
+        
+        /* 使用 Grid 確保欄位完全獨立，不重疊 */
+        .input-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            width: 100%;
+        }
+        
+        .input-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px;
+        }
+
+        label { font-size: 0.95rem; font-weight: 600; color: #334155; }
+        label.required::after { content: " *"; color: #ef4444; }
+        
+        /* 統一輸入框樣式 */
+        input, select, textarea { 
+            padding: 14px; 
+            border: 2px solid var(--input-border); 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            width: 100%;
+            background: white !important;
+            transition: all 0.2s;
+            color: #1e293b;
+            display: block;
+            outline: none;
+        }
+
+        /* 只有 職類 需要自定義箭頭 */
+        select.custom-select {
+            cursor: pointer;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-submit { 
+            background: var(--gradient); 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 14px; 
+            font-size: 1.1rem;
+            font-weight: 700; 
+            cursor: pointer; 
+            margin-top: 10px;
+        }
+
+        .sub-group { 
+            background: #f1f5f9; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border: 1px dashed var(--primary);
+        }
+        
+        .success-msg { display: none; text-align: center; padding: 40px 0; }
+        .success-icon { 
+            width: 70px; height: 70px; background: #dcfce7; color: #22c55e; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 2rem; margin: 0 auto 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 550px) {
+            .input-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <p>Agile Thinking 2026</p>
+            <h1>敏捷思維導入教學行政研討會</h1>
+        </header>
+
+        <div class="content">
+            <div id="form-container">
+                <form id="agileForm">
+                    <!-- 第一排：姓名、Email -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="required">姓名</label>
+                            <input type="text" name="name" required placeholder="您的姓名">
+                        </div>
+                        <div class="input-group">
+                            <label class="required">Email</label>
+                            <input type="email" name="email" required placeholder="hello@ntuh.gov.tw">
+                        </div>
+                    </div>
+
+                    <!-- 第二排：部門、職類 -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="required">部門</label>
+                            <input type="text" name="dept" required placeholder="例如：教學部">
+                        </div>
+                        <div class="input-group">
+                            <label class="required">職類</label>
+                            <select name="category" class="custom-select" required>
+                                <option value="">請選擇職類</option>
+                                <option value="醫師">醫師</option>
+                                <option value="護理師">護理師</option>
+                                <option value="醫事人員">醫事人員</option>
+                                <option value="行政人員">行政人員</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 第三排：職稱、分機 (修正為 input type="text") -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="required">職稱</label>
+                            <input type="text" name="title" required placeholder="例如：主治醫師">
+                        </div>
+                        <div class="input-group">
+                            <label class="required">分機</label>
+                            <input type="text" name="ext" required placeholder="例如：12345">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>是否需要茶水點心？</label>
+                        <select name="snack" id="snackSelect" class="custom-select" onchange="toggleDiet()">
+                            <option value="是">是 (Yes, please!)</option>
+                            <option value="否">否 (不用，謝謝)</option>
+                        </select>
+                    </div>
+
+                    <div id="diet-box" class="sub-group">
+                        <label class="required">飲食偏好</label>
+                        <div style="margin-top: 10px; display: flex; gap: 20px;">
+                            <label style="cursor: pointer;"><input type="radio" name="diet" value="葷食" checked> 葷食</label>
+                            <label style="cursor: pointer;"><input type="radio" name="diet" value="素食"> 素食</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>會前提問</label>
+                        <textarea name="q" rows="3" placeholder="您目前在行政工作上遇到的困難？"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">確認送出報名</button>
+                </form>
+            </div>
+            
+            <div id="success-msg" class="success-msg">
+                <div class="success-icon">✓</div>
+                <h2>報名成功</h2>
+                <p>感謝您的參與，我們已收到您的資訊。</p>
+                <button onclick="location.reload()" style="background:none; border:1px solid #cbd5e1; padding:8px 20px; border-radius:8px; cursor:pointer; color: #64748b; margin-top: 20px;">返回</button>
+            </div>
+        </div>
+        
+        <footer>
+            主辦單位：資訊室 | 聯絡人：江承洋 (分機 000)<br>
+            © 2026 NTUH
+        </footer>
+    </div>
+
+    <script>
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz2DfM9ObvWgOcI-arjrTgc6igMe3aBoqCd_GrPhMewZM4SoD_-bZoyzTS7OvLgi9QdUA/exec";
+
+        function toggleDiet() {
+            const snack = document.getElementById('snackSelect').value;
+            document.getElementById('diet-box').style.display = snack === '是' ? 'block' : 'none';
+        }
+
+        document.getElementById('agileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.disabled = true;
+            btn.innerText = '處理中...';
+
+            const formData = new FormData(this);
+            const payload = {};
+            formData.forEach((value, key) => payload[key] = value);
+            
+            if (payload.snack === "否") payload.diet = "N/A";
+
+            try {
+                await fetch(WEB_APP_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify(payload) 
+                });
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+            } catch (err) {
+                alert("傳送失敗，請稍後再試。");
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
+        });
+
+        window.onload = toggleDiet;
+    </script>
+</body>
+</html>
